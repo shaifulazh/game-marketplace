@@ -1,11 +1,14 @@
 Requirements
+- PHP 8.1
+- Composer
 - Docker 
 
 
 
-To start Laravel in Docker
 
-./vendor/bin/sail up
+To start Laravel in Docker
+    composer install
+    ./vendor/bin/sail up
 
 
 Swagger docs
