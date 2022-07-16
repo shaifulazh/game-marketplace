@@ -6,7 +6,7 @@ Requirements
 
 
 
-To start Laravel in Docker
+To start Laravel in Docker :
         composer install
         ./vendor/bin/sail up
 
