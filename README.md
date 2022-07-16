@@ -10,9 +10,9 @@ To start Laravel in Docker :
 
 1.  Rename .env.docker to .env
 2.  run composer install :
-    + composer install
+$ composer install
 3.  Run 
-    + ./vendor/bin/sail up
+$ ./vendor/bin/sail up
 
 
 Swagger docs
