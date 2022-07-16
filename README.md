@@ -1,11 +1,17 @@
-Requirement 
-- Docker Install
+Requirements
+- Docker 
 
 
 
 To start Laravel in Docker
 
 ./vendor/bin/sail up
+
+
+Swagger docs
+
+http://localhost/api/documentation
+
 
 
 
