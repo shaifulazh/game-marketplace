@@ -1,0 +1,573 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Test task ",
+        "description": "Game keys marketplace",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/goods": {
+            "get": {
+                "tags": [
+                    "goods"
+                ],
+                "summary": "Get list of Goods",
+                "description": "Returns list of goods",
+                "operationId": "7588eb03f732dfcd32b1b1195ced6c97",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Good"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "goods"
+                ],
+                "summary": "Add new Goods",
+                "operationId": "5bc84844dce4afbf94e8d640ff08a024",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "game_infomation": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "game_keys": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "game_infomation": "Ancient Of Noobs",
+                                    "price": 199.99,
+                                    "game_keys": "SDFEJ123323213JJS"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Good"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Input required",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation errors"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "game_infomation": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The game infomation field is required."
+                                                    }
+                                                },
+                                                "price": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The price field is required."
+                                                    }
+                                                },
+                                                "game_keys": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The game keys field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/goods/{id}": {
+            "get": {
+                "tags": [
+                    "goods"
+                ],
+                "summary": "Find Good by id",
+                "operationId": "9757c64b8b5e1bb315a0b5316f4001c6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id to return",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Good"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Good Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "goods"
+                ],
+                "summary": "Update Good by id",
+                "operationId": "7f4e8b03b936581290e66e22d152574d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id to update",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "game_infomation": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "game_keys": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "game_infomation": "Ancient Of Noobs",
+                                    "price": 199.99,
+                                    "game_keys": "SDFEJ123323213JJS"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Good"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Good Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Input required",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation errors"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "game_infomation": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The game infomation field is required."
+                                                    }
+                                                },
+                                                "price": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The price field is required."
+                                                    }
+                                                },
+                                                "game_keys": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The game keys field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment": {
+            "get": {
+                "tags": [
+                    "payments"
+                ],
+                "summary": "Get list of Payments",
+                "description": "Returns list of payments",
+                "operationId": "318a8e6d1447a7cbd66237ccd6660678",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Payment"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "payments"
+                ],
+                "summary": "New Payment",
+                "operationId": "8bd089442f313f34b467e2625ff83655",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "good_id": {
+                                        "type": "string"
+                                    },
+                                    "credit_card": {
+                                        "type": "string"
+                                    },
+                                    "buyer_email": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payment"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Input required",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation errors"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "good_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The good id field is required."
+                                                    }
+                                                },
+                                                "credit_card": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The credit card field is required."
+                                                    }
+                                                },
+                                                "buyer_email": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The buyer email field is required."
+                                                    }
+                                                },
+                                                "price": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The price field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment/{id}": {
+            "get": {
+                "tags": [
+                    "payments"
+                ],
+                "summary": "Get Payment by Id",
+                "description": "Return payment by id",
+                "operationId": "5ec820dc5a59156a714c50a583e10016",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id to return",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Payment Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Payment Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payment"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Good": {
+                "title": "Goods",
+                "description": "Goods model",
+                "properties": {
+                    "game_infomation": {
+                        "title": "game_infomation",
+                        "description": "game_infomation",
+                        "type": "string"
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "price",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "game_keys": {
+                        "title": "game_keys",
+                        "description": "game_keys",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "updated_at",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "description": "created_at",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "Payment": {
+                "title": "Payment",
+                "description": "Payment Model",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer"
+                    },
+                    "good_id": {
+                        "title": "good id",
+                        "description": "good id",
+                        "type": "string"
+                    },
+                    "credit_card": {
+                        "title": "credit_card",
+                        "description": "credit_card",
+                        "type": "string"
+                    },
+                    "buyer_email": {
+                        "title": "buyer_email",
+                        "description": "buyer_email",
+                        "type": "string"
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "price",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "description": "created_at",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "updated_at",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "goods",
+            "description": "Goods operation"
+        },
+        {
+            "name": "payments",
+            "description": "Payments transaction"
+        }
+    ]
+}
