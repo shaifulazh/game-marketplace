@@ -20,13 +20,13 @@ composer install
 
 
 Swagger docs
-
+```
 http://localhost/api/documentation
-
-
-
-
+```
 
 Generate Swagger
 
+To generate swagger json
+```
 php artisan l5-swagger:generate
+```
